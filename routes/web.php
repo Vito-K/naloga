@@ -6,6 +6,7 @@ use App\Http\Controllers\dashController;
 use App\Http\Controllers\Auth\loginController;
 use App\Http\Controllers\Auth\logoutController;
 use App\Http\Controllers\postController;
+use App\Http\Controllers\likeController;
 
 Route::get('/', function () {
     return view('home');
@@ -24,3 +25,6 @@ Route::post('/login', [loginController::class, 'store']);
 
 Route::get('/posts', [postController::class, 'index'])->name('posts');
 Route::post('/posts', [postController::class, 'store']);
+
+Route::post('/posts/{post}/likes', [likeController::class, 'store'])->name('posts.likes');
+Route::delete('/posts/{post}/likes', [likeController::class, 'destroy'])->name('posts.likes');
